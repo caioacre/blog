@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Dados públicos do Brasil</title>
-    <link>https://jjesusfilho.github.io/blog/categories/r/</link>
-    <description>Recent content in R on Dados públicos do Brasil</description>
+    <title>Rselenium on Dados públicos do Brasil</title>
+    <link>https://jjesusfilho.github.io/blog/categories/rselenium/</link>
+    <description>Recent content in Rselenium on Dados públicos do Brasil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-BR</language>
     <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://jjesusfilho.github.io/blog/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jjesusfilho.github.io/blog/categories/rselenium/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,17 +18,6 @@
       
       <guid>https://jjesusfilho.github.io/blog/27/11/2017/baixando-dados-do-minist%C3%A9rio-da-agricultura-com-seleniumpipe/</guid>
       <description>Para a maioria dos sites, fazer raspagem de dados é relativamente fácil. Os pacotes rvest, httr e xml2 dão conta das requisições e da extração dos dados com relativa tranquilidade. No entanto, quando os site possui conteúdo dinâmico, ou seja, exige interação do usuário para mudar de página ou acessar um novo conteúdo, a extração fica mais difícil, pois esses sites incorparam funções do javascript, as quais precisam ser acionadas para dar acesso a novos conteúdos.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>https://jjesusfilho.github.io/blog/23/07/2015/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>https://jjesusfilho.github.io/blog/23/07/2015/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
   </channel>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.31" />
+
+
+<title>Baixando dados do Ministério da Agricultura com seleniumPipes - Dados públicos do Brasil</title>
+<meta property="og:title" content="Baixando dados do Ministério da Agricultura com seleniumPipes - Dados públicos do Brasil">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/blog/css/fonts.css" media="all">
+<link rel="stylesheet" href="/blog/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/blog/" class="nav-logo">
+    <img src="/blog/images/http:/www.josejesus.info/wp-content/uploads/2016/02/jose-headshot-3-300x300.jpg"
+         width="50"
+         height="50"
+         alt="Foto">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="https://github.com/jjesusfilho/blog">GitHub</a></li>
+    
+    <li><a href="/blog/about/">Sobre</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Baixando dados do Ministério da Agricultura com seleniumPipes</h1>
+
+    
+    <span class="article-date">2017/11/27</span>
+    
+
+    <div class="article-content">
+      <p>Para a maioria dos sites, fazer raspagem de dados é relativamente fácil. Os pacotes <code>rvest</code>, <code>httr</code> e <code>xml2</code> dão conta das requisições e da extração dos dados com relativa tranquilidade. No entanto, quando os site possui conteúdo dinâmico, ou seja, exige interação do usuário para mudar de página ou acessar um novo conteúdo, a extração fica mais difícil, pois esses sites incorparam funções do <code>javascript</code>, as quais precisam ser acionadas para dar acesso a novos conteúdos.</p>
+<p>Nesse post iremos apresentar a interface do R com o Selenium, utilizando o pacote <code>seleniumPipes</code>, que na verdade, é uma mera implementação de outro pacote, o <code>RSelenium</code>, porém utilizando pipes, a la <code>tidyverse</code>.</p>
+<p>Usar o selenium no R costuma ser um processo doloroso, até que os desenvolvedores do <code>Selenium</code> resolveram criar imagens no docker, de modo que, você pode escolher a que melhor lhe convêm, baixá-la (pull image) e iniciá-la antes de iniciar a raspagem.</p>
+<p>Há dezenas de tutoriais na web explicando como instalar o <code>docker</code> no seu OS e como puxar (pull) uma imagem. Para puxar uma imagem do <code>Selenium</code>, sugiro, você dar uma olhada no seguinte post: <a href="http://rpubs.com/johndharrison/RSelenium-Docker">RSelenium Docker</a>.</p>
+<p>Neste post, eu estou assumindo que você já instalou o docker. Se já instalou, agora é chamar a imagem do <code>Selenium</code>, que preferir. Para esse post, eu vou usar a imagem que utiliza o <code>Firefox</code>, mas há também as opções com <code>Chrome</code> e <code>PhantomJS</code>. Para chamar a image, vá para o terminal e digite o seguinte(o sinal de dólar não deve ser digitado):</p>
+<pre><code>$ docker pull selenium/standalone-firefox:2.53.0</code></pre>
+<p>Se você usar <code>Linux</code>, provalmente terá de usar <code>sudo</code>. Vai demorar um pouco, mas uma vez baixado, você poderá rodar a imagem:</p>
+<pre><code>$ docker run -d -p 4445:4444 selenium/standalone-firefox:2.53.0</code></pre>
+<p>Esse comando irá iniciar um contêiner da imagem. Para vê-lo, basta o rodar o seguinte comando no terminal:</p>
+<pre><code>$ docker ps</code></pre>
+<p>Caso você queira ver apenas o nome do contêiner, a imagem e o ID do contêiner, sugiro que você o argumento –format:</p>
+<pre><code>sudo docker ps --format &#39;table {{.Names}}\t{{.Image}}\t{{.ID}}&#39;</code></pre>
+<pre><code> NAMES                IMAGE                                      CONTAINER ID
+compassionate_bose   selenium/standalone-firefox:2.53.0   a556b0acd49e</code></pre>
+<p>Agora, iremos para o <code>RStudio</code> e criar nosso raspador do site do Ministério da Agricultura. Não se esqueça de, ao final, interromper o conteiner:</p>
+<pre><code>$ docker stop [conteiner ID]</code></pre>
+<p>No exemplo acima</p>
+<pre><code>$ docker stop a556b0acd49e</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/blog/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/blog/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/blog/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

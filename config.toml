@@ -1,7 +1,7 @@
 baseurl = "https://jjesusfilho.github.io/blog/"
 languageCode = "pt-BR"
 title = "Dados públicos do Brasil"
-theme = "cocoa-eh-hugo-theme"
+theme = "hugo-lithium-theme"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
