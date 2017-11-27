@@ -1,0 +1,65 @@
+---
+title: Baixando dados do Ministério da Agricultura com seleniumPipes
+author: José de Jesus Filho
+date: '2017-11-27'
+slug: baixando-dados-do-ministério-da-agricultura-com-seleniumpipe
+categories:
+  - R
+  - Rselenium
+  - scraping
+tags:
+  - Dados Públicos
+---
+
+Para a maioria dos sites, fazer raspagem de dados é relativamente fácil. Os pacotes `rvest`, `httr` e `xml2` dão conta das requisições e da extração dos dados com relativa tranquilidade. No entanto, quando os site possui conteúdo dinâmico, ou seja, exige interação do usuário para mudar de página ou acessar um novo conteúdo, a extração fica mais difícil, pois esses sites incorparam funções do `javascript`, as quais precisam ser acionadas para dar acesso a novos conteúdos.
+
+Nesse post iremos apresentar a interface do R com o Selenium, utilizando o pacote `seleniumPipes`, que na verdade, é uma mera implementação de outro pacote, o `RSelenium`, porém utilizando pipes, a la `tidyverse`.
+
+Usar o selenium no R costuma ser um processo doloroso, até que os desenvolvedores do `Selenium` resolveram criar imagens no docker, de modo que, você pode escolher a que melhor lhe convêm, baixá-la (pull image) e iniciá-la antes de iniciar a raspagem.
+
+Há dezenas de tutoriais na web explicando como instalar o `docker` no seu OS e como puxar (pull) uma imagem. Para puxar uma imagem do `Selenium`, sugiro, você dar uma olhada no seguinte post: [RSelenium Docker ](http://rpubs.com/johndharrison/RSelenium-Docker).
+
+Neste post, eu estou assumindo que você já instalou o docker. Se já instalou, agora é chamar a imagem do `Selenium`, que preferir. Para esse post, eu vou usar a imagem que utiliza o `Firefox`, mas há também as opções com `Chrome` e `PhantomJS`. Para chamar a image, vá para o terminal e digite o seguinte(o sinal de dólar não deve ser digitado):
+
+```
+$ docker pull selenium/standalone-firefox:2.53.0
+```
+
+Se você usar `Linux`, provalmente terá de usar `sudo`. Vai demorar um pouco, mas uma vez baixado, você poderá rodar a imagem:
+
+```
+$ docker run -d -p 4445:4444 selenium/standalone-firefox:2.53.0
+```
+Esse comando irá iniciar um contêiner da imagem. Para vê-lo, basta o rodar o seguinte comando no terminal:
+
+```
+$ docker ps
+```
+
+Caso você queira ver apenas o nome do contêiner, a imagem e o ID do contêiner, sugiro que você o argumento --format:
+
+```
+sudo docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.ID}}'
+```
+
+
+```
+ NAMES                IMAGE                                      CONTAINER ID
+compassionate_bose   selenium/standalone-firefox:2.53.0   a556b0acd49e
+```
+
+Agora, iremos para o `RStudio` e criar nosso raspador do site do Ministério da Agricultura. Não se esqueça de, ao final, interromper o conteiner:
+
+
+```
+$ docker stop [conteiner ID]
+```
+
+No exemplo acima
+
+```
+$ docker stop a556b0acd49e
+```
+
+
+

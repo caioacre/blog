@@ -1,7 +1,7 @@
-baseurl = "/"
+baseurl = "https://jjesusfilho.github.io/blog/"
 languageCode = "pt-BR"
 title = "Dados públicos do Brasil"
-theme = "hugo-lithium-theme"
+theme = "cocoa-eh-hugo-theme"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
@@ -29,8 +29,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     MathJaxVersion = "2.7.1"
 
     [params.logo]
-    url = "logo.png"
+    url = "http://www.josejesus.info/wp-content/uploads/2016/02/jose-headshot-3-300x300.jpg"
     width = 50
     height = 50
-    alt = "Logo"
+    alt = "Foto"
 
